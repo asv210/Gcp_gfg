@@ -11,3 +11,127 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.box{
+display: flex;
+position: absolute;
+left: 31.67%;
+right: 31.67%;
+top: 14.16%;
+bottom: 21.67%;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+background: rgba(217, 217, 217, 0.56);
+border-radius: 15px;
+}
+
+.box input{
+  /* margin: 1rem;
+  width: 20rem;
+  border-radius: 2px;
+  background-color: rgb(204, 224, 202); */
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  font-size: 1rem;
+	margin: 10px;
+  border-radius: 0.2rem;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  width: 70%;
+  display: block;
+  border-bottom: 0.3rem solid transparent;
+  transition: all 0.3s;
+}
+.btn{
+  height: 3rem;
+  border-radius: 5px;
+  margin-top: 2rem;
+  color: black;
+  text-decoration: underline;
+  -webkit-transform: scale(1.00);
+	transform: scale(1.00);
+}
+
+.on-top{
+ height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(217, 217, 217, 0.56);
+border-radius: 15px;
+}
+.label{
+  position: relative;
+  width: 20vw;
+  right: 15%;
+  
+}
+.search-shopkeeper{
+  position: relative;
+  right: 14.5%;
+  border-radius: 4px;
+}
+.admin-btn{
+  position: relative;
+  left: 30%;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+  background-color: #298f2d; /* Green */
+  color: white;
+  border: none;
+  height: 5vh;
+  width: 10vw;
+}
+
+.align li{
+  list-style: none;
+  
+}
+.align{
+  position: relative;
+  bottom: 50%;
+}
+
+.product-display{
+    display: flex;
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    top: 20%;
+    bottom: 5%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: rgba(217, 217, 217, 0.56);
+    border-radius: 15px;
+    
+}
+
+.btn{
+  transition-duration: 0.4s;
+  background-color: #298f2d; /* Green */
+  color: white;
+  border: none;
+  height: 5vh;
+  width: 10vw;
+  
+}
+
+.btn:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+.admin-btn:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  border-style: none;
+}
+
+#type{
+  border-radius: 3px;
+  border: none;
+  height: 5vh;
+  margin-top: 20px;
+  width: 10vw;
+}
