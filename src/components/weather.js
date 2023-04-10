@@ -21,7 +21,7 @@ const Weather = () => {
 
   function getData() {
     setDay([setWeekDay(0), setWeekDay(1), setWeekDay(2), setWeekDay(3), setWeekDay(4)])
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${process.env.REACT_APP_WEATHER_API_KEY2}`)
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${process.env.REACT_APP_WEATHER_API_KEY1}`)
       .then(res => res.json())
       .then(data => {
 
@@ -49,9 +49,53 @@ const Weather = () => {
 
   }
 
-  // useEffect(() => {
-  //   getData()
-  // })
+  useEffect(() => {
+
+    const success = (position) => {
+      const latitude = position.coords.latitude
+      const longitude = position.coords.longitude
+
+      fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_WEATHER_API_KEY1}`)
+        .then(res => res.json())
+        .then(data => {
+          setCity(data.city.name)
+          if (data.list[0].weather[0].main === 'Clouds') {
+            console.log(data.list[0].weather[0].main)
+            // document.body.style.backgroundImage = "url('../images/cloudy.jpg')"
+            setBg(p1)
+          } else if (data.list[0].weather[0].main === 'Rain') {
+            setBg(p2)
+          } else if (data.list[0].weather[0].main === 'Clear') {
+            setBg(p3)
+          } else if (data.list[0].weather[0].main === 'Snow') {
+            setBg('../images/snowy.jpg')
+          } else {
+            setBg(bgimg)
+          }
+          setHumidity([data.list[0].main.humidity, data.list[1].main.humidity, data.list[2].main.humidity, data.list[3].main.humidity, data.list[4].main.humidity])
+          setWind([data.list[0].wind.speed, data.list[1].wind.speed, data.list[2].wind.speed, data.list[3].wind.speed, data.list[4].wind.speed])
+          setCurr(Number(data.list[0].main.temp - 273.15).toFixed(1))
+          setMin([Number(data.list[0].main.temp_min - 273.15).toFixed(1), Number(data.list[1].main.temp_min - 273.15).toFixed(1), Number(data.list[2].main.temp_min - 273.15).toFixed(1), Number(data.list[3].main.temp_min - 273.15).toFixed(1), Number(data.list[4].main.temp_min - 273.15).toFixed(1)])
+          setMax([Number(data.list[0].main.temp_max - 273.15).toFixed(1), Number(data.list[1].main.temp_max - 273.15).toFixed(1), Number(data.list[2].main.temp_max - 273.15).toFixed(1), Number(data.list[3].main.temp_max - 273.15).toFixed(1), Number(data.list[4].main.temp_max - 273.15).toFixed(1)])
+          setImg([`http://openweathermap.org/img/wn/${data.list[0].weather[0].icon}.png`, `http://openweathermap.org/img/wn/${data.list[1].weather[0].icon}.png`, `http://openweathermap.org/img/wn/${data.list[2].weather[0].icon}.png`, `http://openweathermap.org/img/wn/${data.list[3].weather[0].icon}.png`, `http://openweathermap.org/img/wn/${data.list[4].weather[0].icon}.png`])
+          getCityName(latitude, longitude)
+        })
+    }
+
+    const getCityName = (latitude, longitude) => {
+      fetch(`https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&appid=${process.env.REACT_APP_WEATHER_API_KEY1}`)
+        .then(res => res.json())
+        .then(data => {
+          setCity(data[0].name + ", " + data[0].state + ", " + data[0].country)
+        })
+        .catch(err => alert("Something went wrong..." + err))
+    }
+
+    const error = (error) => {
+      alert("Unable to retrieve your location, error: " + error.message)
+    }
+    navigator.geolocation.getCurrentPosition(success, error);
+  }, [])
 
   const d = new Date()
   const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
@@ -94,7 +138,7 @@ const Weather = () => {
               <p className='weather' id='day2'>{days[day[1]]}</p>
               <div className='image'> <img src={img[1]} className='imgclass' alt="" id='img2' /> </div>
               <p className='maxValues' id='day1Max'>Humidity: {humidity[1]}</p>
-            <p className='maxValues' id='day1Max'>Wind: {wind[1]}</p>
+              <p className='maxValues' id='day1Max'>Wind: {wind[1]}</p>
               <p className='minValues' id='day2Min'>Min: {min[1]}°C</p>
               <p className='maxValues' id='day2Max'>Max: {max[1]}°C</p>
             </div>
@@ -102,7 +146,7 @@ const Weather = () => {
               <p className='weather' id='day3'>{days[day[2]]}</p>
               <div className='image'> <img src={img[2]} className='imgclass' alt="" id='img3' /> </div>
               <p className='maxValues' id='day1Max'>Humidity: {humidity[2]}</p>
-            <p className='maxValues' id='day1Max'>Wind: {wind[2]}</p>
+              <p className='maxValues' id='day1Max'>Wind: {wind[2]}</p>
               <p className='minValues' id='day3Min'>Min: {min[2]}°C</p>
               <p className='maxValues' id='day3Max'>Max: {max[2]}°C</p>
             </div>
@@ -110,7 +154,7 @@ const Weather = () => {
               <p className='weather' id='day4'>{days[day[3]]}</p>
               <div className='image'> <img src={img[3]} className='imgclass' alt="" id='img4' /> </div>
               <p className='maxValues' id='day1Max'>Humidity: {humidity[3]}</p>
-            <p className='maxValues' id='day1Max'>Wind: {wind[3]}</p>
+              <p className='maxValues' id='day1Max'>Wind: {wind[3]}</p>
               <p className='minValues' id='day4Min'>Min: {min[3]}°C</p>
               <p className='maxValues' id='day4Max'>Max: {max[3]}°C</p>
             </div>
@@ -118,7 +162,7 @@ const Weather = () => {
               <p className='weather' id='day5'>{days[day[4]]}</p>
               <div className='image'> <img src={img[4]} className='imgclass' alt="" id='img5' /> </div>
               <p className='maxValues' id='day1Max'>Humidity: {humidity[4]}</p>
-            <p className='maxValues' id='day1Max'>Wind: {wind[4]}</p>
+              <p className='maxValues' id='day1Max'>Wind: {wind[4]}</p>
               <p className='minValues' id='day5Min'>Min: {min[4]}°C</p>
               <p className='maxValues' id='day5Max'>Max: {max[4]}°C</p>
             </div>
