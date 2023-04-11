@@ -20,7 +20,6 @@ const Weather = () => {
 
 
   function getData() {
-    setDay([setWeekDay(0), setWeekDay(1), setWeekDay(2), setWeekDay(3), setWeekDay(4)])
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${process.env.REACT_APP_WEATHER_API_KEY1}`)
       .then(res => res.json())
       .then(data => {
@@ -95,19 +94,20 @@ const Weather = () => {
       alert("Unable to retrieve your location, error: " + error.message)
     }
     navigator.geolocation.getCurrentPosition(success, error);
+    function setWeekDay(day) {
+      if (day + d.getDay() > 6) {
+        return day + d.getDay() - 7
+      }
+      else {
+        return day + d.getDay()
+      }
+    }
+    setDay([setWeekDay(0), setWeekDay(1), setWeekDay(2), setWeekDay(3), setWeekDay(4)])
   }, [])
-
+  
   const d = new Date()
   const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
-  function setWeekDay(day) {
-    if (day + d.getDay() > 6) {
-      return day + d.getDay() - 7
-    }
-    else {
-      return day + d.getDay()
-    }
-  }
 
   return (
     <>
