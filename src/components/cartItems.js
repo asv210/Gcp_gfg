@@ -58,7 +58,7 @@ const CartItems = (props) => {
   }, [productData]);
   return (
     <>
-      {productInfo.map != undefined ? (
+      {productInfo.map !== undefined ? (
         <>
           <h2 style={{ alignSelf: 'flex-end', fontFamily: 'Montserrat Alternates' }}>Total price : {totalPrice}</h2>
           <div style={{ gridTemplateColumns: 'repeat(3, 1fr)', display: 'grid', justifySelf: 'center', paddingLeft: '4rem' }}>
