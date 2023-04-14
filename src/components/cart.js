@@ -6,17 +6,15 @@ import pic1 from "../images/fertilizer.jpg";
 import pic2 from "../images/tool.png";
 
 import axios from "axios";
-function Cart({ item, setTotalPrice, totalPrice }) {
+function Cart({ item }) {
   const [id, setData] = useState();
   const func = async () => {
     console.log(item?.productId);
     const { data } = await axios.post(
       "http://localhost:8000/api/getprodbyid/?id=" + item?.productId
     );
-    console.log(data);
+
     setData(data);
-    console.log(id)
-    setTotalPrice(parseInt(totalPrice) + parseInt(data.price));
   };
   useEffect(() => {
     func();
@@ -27,7 +25,6 @@ function Cart({ item, setTotalPrice, totalPrice }) {
     ide: item?.productId,
   });
   const remove = async (e) => {
-    console.log(first);
     e.preventDefault();
     await axios
       .post("http://localhost:8000/api/deletecart/", first)

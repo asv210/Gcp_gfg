@@ -24,13 +24,12 @@
 
 .rightContainer {
       width: 76%;
-      background-color: #ffffff73;
       height: 100%;
+      background-color: #ffffff73;
       margin: 2vh;
       padding: 10vh;
-      margin-left: 1.5vh;
+      padding-left: 25rem;
       border-radius: 15px;
       float: right;
-      align-items: center;
       font-family: 'Montserrat Alternates';
 }

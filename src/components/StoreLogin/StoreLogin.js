@@ -19,6 +19,7 @@ function StoreLogin() {
           // console.log(res.data);
           localStorage.setItem("mobile", res.data.mobile);
           localStorage.setItem("name", res.data.name);
+          localStorage.setItem("pincode", res.data.pincode);
 
           window.location = "/shopOnline";
         } else {

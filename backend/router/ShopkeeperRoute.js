@@ -28,6 +28,12 @@ class ShopkeeperRoute {
     const data = await ShopkeeperModel.findOne({ _id: id });
     return res.status(200).send(data);
   };
+  static getDocByPin = async (req, res) => {
+    const pin = req.query.pin;
+
+    const data = await ShopkeeperModel.find({ pincode: pin });
+    return res.status(200).send(data);
+  };
   static getDocById = async (req, res) => {
     try {
       const result = await ShopkeeperModel.findOne({

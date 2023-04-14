@@ -7,6 +7,8 @@ const router = express.Router();
 
 router.get("/getallsk/", ShopkeeperRoute.getAllDoc);
 
+router.post("/getskbypin/", ShopkeeperRoute.getDocByPin);
+
 router.post("/loginsk/", ShopkeeperRoute.getDocById);
 
 router.post("/createsk/", ShopkeeperRoute.createDoc);
