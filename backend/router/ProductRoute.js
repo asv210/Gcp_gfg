@@ -1,3 +1,4 @@
+import { isValidObjectId } from "mongoose";
 import ProductModel from "../model/ProductModel.js";
 
 class ProductRoute {
@@ -18,26 +19,35 @@ class ProductRoute {
       console(err);
     }
   };
+  static getAll = async (req, res) => {
+    try {
+      const result = await ProductModel.find();
+
+      res.status(200).send(result);
+    } catch (err) {
+      console(err);
+    }
+  };
   static getDoc = async (req, res) => {
     const data = await ProductModel.findOne({ _id: req.query._id });
     return res.status(200).send(data);
   };
   static getDocById = async (req, res) => {
-    try {
-      const result = await ProductModel.findOne({
-        email: req.body.email,
-      });
-      if (result != null) {
-        if (result.password === req.body.password) {
+    if (!req.query.id) {
+      return res.status(400).send("no data");
+    } else {
+      try {
+        const result = await ProductModel.findOne({
+          _id: req.query.id,
+        });
+        if (result != null) {
           res.status(200).send(result);
         } else {
           res.status(203).send("not ok");
         }
-      } else {
-        res.status(203).send("not ok");
+      } catch (err) {
+        console.log(err);
       }
-    } catch (err) {
-      console.log(err);
     }
   };
 
@@ -55,7 +65,7 @@ class ProductRoute {
   static updateDoc = async (req, res) => {
     try {
       const updateuser = await ProductModel.findOne({
-        _id: req.query._id,
+        _id: isValidObjectId(req.query._id),
       });
       if (updateuser.email === req.body.email) {
         await updateuser.updateOne({ $set: req.body });
