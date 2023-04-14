@@ -11,6 +11,10 @@ mongoDB();
 app.use(express.json());
 app.use("/api/", web);
 
+app.get("/", (req, res) => {
+  res.send("Server running...");
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
