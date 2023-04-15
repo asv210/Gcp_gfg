@@ -24,6 +24,15 @@ This app can be deployed directly to Google Cloud and AMD instance since there i
 #### `README` - This file!
 
 
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn how to setup a local MongoDB instance for testing, check out how to [Connect to MongoDB](https://docs.mongodb.com/guides/server/drivers/).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+
 ### View Project
 
 http://meta-passkey-383508.uc.r.appspot.com/
