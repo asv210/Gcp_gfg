@@ -18,7 +18,7 @@ function StoreSignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await axios
-      .post("http://localhost:8000/api/createfarmer/", data)
+      .post("http://35.192.98.172/api/createfarmer/", data)
       .then((res) => {
         if (res.status == 201) {
           // console.log(res.data);

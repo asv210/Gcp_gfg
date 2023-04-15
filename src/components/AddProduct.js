@@ -18,9 +18,9 @@ function AddProduct() {
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios
-      .post("http://localhost:8000/api/createprod/", prod)
+      .post("http://35.192.98.172/api/createprod/", prod)
       .then((res) => {
-        if (res.status == 201) {
+        if (res.status === 201) {
           // console.log(res.data);
 
           alert("successfully added");

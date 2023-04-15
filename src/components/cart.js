@@ -11,7 +11,7 @@ function Cart({ item }) {
   const func = async () => {
     console.log(item?.productId);
     const { data } = await axios.post(
-      "http://localhost:8000/api/getprodbyid/?id=" + item?.productId
+      "http://35.192.98.172/api/getprodbyid/?id=" + item?.productId
     );
 
     setData(data);
@@ -27,7 +27,7 @@ function Cart({ item }) {
   const remove = async (e) => {
     e.preventDefault();
     await axios
-      .post("http://localhost:8000/api/deletecart/", first)
+      .post("http://35.192.98.172/api/deletecart/", first)
       .then((res) => {
         if (res.status == 200) {
           console.log(res.data);

@@ -6,7 +6,7 @@ function Adminpage() {
   const func = async () => {
     // e.preventDefault();
 
-    const { data } = await axios.get("http://localhost:8000/api/getallsk/");
+    const { data } = await axios.get("http://35.192.98.172/api/getallsk/");
     // .then((res) => {
     // const data1 = res.data;
     // console.log(res.data);

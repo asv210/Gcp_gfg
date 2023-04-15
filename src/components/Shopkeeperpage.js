@@ -7,7 +7,7 @@ function Shopkeeperpage() {
     // e.preventDefault();
     const emo = localStorage.getItem("email");
     const { data } = await axios.post(
-      "http://localhost:8000/api/getallproduct/?email=" + emo
+      "http://35.192.98.172/api/getallproduct/?email=" + emo
     );
     // .then((res) => {
     // const data1 = res.data;

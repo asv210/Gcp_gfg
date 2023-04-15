@@ -8,7 +8,7 @@ const Shopkeeperdisplay = ({ item }) => {
   };
   const del = async () => {
     await axios
-      .delete("http://localhost:8000/api/deletesk/?_id=" + item?._id)
+      .delete("http://35.192.98.172/api/deletesk/?_id=" + item?._id)
       .then((res) => {
         if (res.status === 204) {
           // console.log(res.data);

@@ -12,7 +12,7 @@ function ShopKeeperDetails() {
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios
-      .post("http://localhost:8000/api/createsk/", user)
+      .post("http://35.192.98.172/api/createsk/", user)
       .then((res) => {
         if (res.status == 201) {
           // console.log(res.data);

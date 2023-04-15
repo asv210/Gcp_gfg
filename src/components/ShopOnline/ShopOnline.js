@@ -113,7 +113,7 @@ function ShopOnline(props) {
   const navigate = useNavigate();
   const [first, setfirst] = useState([]);
   const func = async () => {
-    const { data } = await axios.get("http://localhost:8000/api/allproduct/");
+    const { data } = await axios.get("http://35.192.98.172/api/allproduct/");
     console.log(data);
     if (data.length > 0) {
       setSeed(data.filter((item) => item.prodType == "Seed"));

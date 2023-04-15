@@ -12,7 +12,7 @@ const EditShopkeeper = () => {
   const [id, setid] = useState(localStorage.getItem("skId"));
   const onSubmit = async (e) => {
     await axios
-      .put("http://localhost:8000/api/editskbyid/?_id=" + id, user)
+      .put("http://35.192.98.172/api/editskbyid/?_id=" + id, user)
       .then((res) => {
         if (res.status == 200) {
           // console.log(res.data);
@@ -34,7 +34,7 @@ const EditShopkeeper = () => {
   };
   const fun = async (e) => {
     await axios
-      .post("http://localhost:8000/api/getskbyid/?_id=" + id)
+      .post("http://35.192.98.172/api/getskbyid/?_id=" + id)
       .then((res) => {
         setuser(res.data);
         console.log(res.data);

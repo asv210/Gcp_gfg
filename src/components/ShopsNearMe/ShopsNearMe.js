@@ -9,7 +9,7 @@ const ShopsNearMe = () => {
     // e.preventDefault();
 
     const { data } = await axios.post(
-      "http://localhost:8000/api/getskbypin/?pin=" + pi
+      "http://35.192.98.172/api/getskbypin/?pin=" + pi
     );
     // .then((res) => {
     // const data1 = res.data;

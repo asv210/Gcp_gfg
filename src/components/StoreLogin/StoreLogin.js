@@ -13,7 +13,7 @@ function StoreLogin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await axios
-      .post("http://localhost:8000/api/farmerlogin/", data)
+      .post("http://35.192.98.172/api/farmerlogin/", data)
       .then((res) => {
         if (res.status == 200) {
           // console.log(res.data);

@@ -15,7 +15,7 @@ function ShopKeeperLogin() {
   };
   const onSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:8000/api/loginsk/", user).then((res) => {
+    await axios.post("http://35.192.98.172/api/loginsk/", user).then((res) => {
       if (res.status == 200) {
         // console.log(res.data);
         localStorage.setItem("email", user.email);
