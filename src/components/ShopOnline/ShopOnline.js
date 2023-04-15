@@ -148,7 +148,7 @@ function ShopOnline(props) {
   //   };
 
   const addToCart = async (par) => {
-    const { data } = await axios.post("http://localhost:8000/api/updatecart/", {
+    const { data } = await axios.post("http://35.192.98.172/api/updatecart/", {
       name: localStorage.getItem("name"),
       id: par,
     });
