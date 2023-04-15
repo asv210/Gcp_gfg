@@ -20,9 +20,7 @@ function StoreSignUp() {
     await axios
       .post("http://35.192.98.172/api/createfarmer/", data)
       .then((res) => {
-        if (res.status == 201) {
-          // console.log(res.data);
-
+        if (res.status === 201) {
           alert("successfully added");
           window.location = "/storeLogin";
         } else {

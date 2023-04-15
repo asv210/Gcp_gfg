@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import axios from "axios";
 const Shopkeeperdisplay = ({ item }) => {
   const edit = () => {
     localStorage.setItem("skId", item?._id);
-    // console.log(localStorage.getItem("productId"));
     window.location = "/EditShopkeeper";
   };
   const del = async () => {
@@ -11,8 +10,6 @@ const Shopkeeperdisplay = ({ item }) => {
       .delete("http://35.192.98.172/api/deletesk/?_id=" + item?._id)
       .then((res) => {
         if (res.status === 204) {
-          // console.log(res.data);
-
           alert("successfully delete");
           window.location.reload(true);
         } else {

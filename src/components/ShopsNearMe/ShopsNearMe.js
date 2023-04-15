@@ -6,29 +6,14 @@ const ShopsNearMe = () => {
   const [dat, setData] = useState([]);
   const pi = localStorage.getItem("pincode");
   const func = async () => {
-    // e.preventDefault();
-
     const { data } = await axios.post(
       "http://35.192.98.172/api/getskbypin/?pin=" + pi
     );
-    // .then((res) => {
-    // const data1 = res.data;
-    // console.log(res.data);
-    // const data = await res.data;
-
     if (data.length > 0) {
       setData([data]);
       console.log(dat);
     } else {
     }
-    // // console.log(res.data);
-    // setData(res.data);
-    // console.log(dat);
-
-    // .then((res) => {
-    //   setData([...data, res.data]);
-    //   console.log(data);
-    // });
   };
   useEffect(() => {
     func();

@@ -25,7 +25,6 @@ const Weather = () => {
       .then((data) => {
         if (data.list[0].weather[0].main === "Clouds") {
           console.log(data.list[0].weather[0].main);
-          // document.body.style.backgroundImage = "url('../images/cloudy.jpg')"
           setBg(p1);
         } else if (data.list[0].weather[0].main === "Rain") {
           setBg(p2);
@@ -89,7 +88,6 @@ const Weather = () => {
           setCity(data.city.name);
           if (data.list[0].weather[0].main === "Clouds") {
             console.log(data.list[0].weather[0].main);
-            // document.body.style.backgroundImage = "url('../images/cloudy.jpg')"
             setBg(p1);
           } else if (data.list[0].weather[0].main === "Rain") {
             setBg(p2);

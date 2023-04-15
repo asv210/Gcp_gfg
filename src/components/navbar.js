@@ -59,16 +59,6 @@ const Navbar = () => {
                 About us
               </NavLink>
             </li>
-            {/* <li className="nav-item mx-3">
-              <NavLink to="/Adminlogin" className="nav-link">
-                Admin
-              </NavLink>
-            </li>
-            <li className="nav-item mx-3">
-              <NavLink to="/ShopKeeperLogin" className="nav-link">
-                Shopkeeper
-              </NavLink>
-            </li> */}
             <li
               className="nav-item dropdown mx-3"
               style={{ paddingTop: "8px", fontSize: "1.2rem" }}

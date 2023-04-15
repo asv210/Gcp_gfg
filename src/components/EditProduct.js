@@ -22,8 +22,6 @@ const EditProduct = () => {
       .put("http://35.192.98.172/api/editprodbymail/?_id=" + id, prod)
       .then((res) => {
         if (res.status == 200) {
-          // console.log(res.data);
-
           alert("successfully added");
           localStorage.removeItem("productId");
           window.location = "/Shopkeeperpage";

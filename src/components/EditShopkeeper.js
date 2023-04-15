@@ -15,8 +15,6 @@ const EditShopkeeper = () => {
       .put("http://35.192.98.172/api/editskbyid/?_id=" + id, user)
       .then((res) => {
         if (res.status == 200) {
-          // console.log(res.data);
-
           alert("successfully added");
           localStorage.removeItem("skId");
           window.location = "/Shopkeeperpage";

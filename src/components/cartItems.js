@@ -23,33 +23,27 @@ const CartItems = (props) => {
       productData
     );
 
-    if (data.cart.length > 0) {
-      setProductInfo([data.cart]);
-      console.log("prod. infod", productInfo);
+    if (data.cart.map !== undefined) {
+      if (data.cart.length > 0) {
+        setProductInfo([data.cart]);
+        console.log("prod. infod", productInfo);
+      }
     } else {
     }
-    // if (productInfo.length > 0) {
-    //   productInfo[0].map(async (item) => {
-    //     const { data } = await axios.post(
-    //       "http://35.192.98.172/api/getprodbyid/?id=" + item?.productId
-    //     );
-    //     console.log("er");
+    if (productInfo) {
+      if (productInfo.length > 0) {
+        const axiosRequests = productInfo[0].map(async (item) => {
+          const { data } = await axios.post(
+            "http://35.192.98.172/api/getprodbyid/?id=" + item?.productId
+          );
+          console.log("er");
+          return parseInt(data.price);
+        });
 
-    //     setTotalPrice(totalPrice + parseInt(data.price));
-    //   });
-    // }
-    if (productInfo.length > 0) {
-      const axiosRequests = productInfo[0].map(async (item) => {
-        const { data } = await axios.post(
-          "http://35.192.98.172/api/getprodbyid/?id=" + item?.productId
-        );
-        console.log("er");
-        return parseInt(data.price);
-      });
-
-      const prices = await Promise.all(axiosRequests);
-      const total = prices.reduce((acc, price) => acc + price, 0);
-      setTotalPrice(total);
+        const prices = await Promise.all(axiosRequests);
+        const total = prices.reduce((acc, price) => acc + price, 0);
+        setTotalPrice(total);
+      }
     }
   };
 
@@ -60,7 +54,6 @@ const CartItems = (props) => {
     <>
       {productInfo.map !== undefined ? (
         <>
-          <h2 style={{ alignSelf: 'flex-end', fontFamily: 'Montserrat Alternates' }}>Total price : {totalPrice}</h2>
           <div style={{ gridTemplateColumns: 'repeat(3, 1fr)', display: 'grid', justifySelf: 'center', paddingLeft: '4rem' }}>
             {productInfo[0]?.map((item) => {
               return (

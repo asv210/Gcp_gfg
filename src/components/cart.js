@@ -29,7 +29,7 @@ function Cart({ item }) {
     await axios
       .post("http://35.192.98.172/api/deletecart/", first)
       .then((res) => {
-        if (res.status == 200) {
+        if (res.status === 200) {
           console.log(res.data);
           window.location.reload(true);
         } else {
@@ -65,7 +65,6 @@ function Cart({ item }) {
               <Button
                 className="btn btn-primary"
                 style={{ width: "100%" }}
-              // onClick={() => addToCart(seed)}
               >
                 Buy Now
               </Button>

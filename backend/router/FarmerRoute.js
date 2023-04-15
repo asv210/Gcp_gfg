@@ -91,7 +91,6 @@ class FarmerRoute {
         // If cart item not found, send appropriate response
         return res.status(404).send("Cart item not found");
       }
-      // farmer.cart.pull({ productId: req.body.id });
       farmer.cart.splice(cartIndex, 1);
       await farmer.save();
       res.status(200).send(farmer);
@@ -104,8 +103,6 @@ class FarmerRoute {
       const farmer = await FarmerModel.findOne({
         name: req.body.name,
       });
-
-      // farmer.cart.pull({ productId: req.body.id });
       farmer.cart.push({
         productId: req.body.id,
         purchased: false,

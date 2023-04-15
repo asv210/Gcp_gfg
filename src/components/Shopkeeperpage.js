@@ -4,27 +4,14 @@ import axios from "axios";
 function Shopkeeperpage() {
   const [dat, setData] = useState([]);
   const func = async () => {
-    // e.preventDefault();
     const emo = localStorage.getItem("email");
     const { data } = await axios.post(
       "http://35.192.98.172/api/getallproduct/?email=" + emo
     );
-    // .then((res) => {
-    // const data1 = res.data;
-    // console.log(res.data);
-    // const data = await res.data;
     if (data.length > 0) {
       setData([data]);
     } else {
     }
-    // // console.log(res.data);
-    // setData(res.data);
-    // console.log(dat);
-
-    // .then((res) => {
-    //   setData([...data, res.data]);
-    //   console.log(data);
-    // });
   };
   useEffect(() => {
     func();
@@ -34,7 +21,7 @@ function Shopkeeperpage() {
   };
   return (
     <>
-      <nav className="on-top"  style={{ fontFamily: 'Montserrat Alternates' }}>
+      <nav className="on-top" style={{ fontFamily: 'Montserrat Alternates' }}>
         <button className="admin-btn" onClick={addDetails}>
           Add Products
         </button>
@@ -47,7 +34,7 @@ function Shopkeeperpage() {
           Log Out
         </button>
       </nav>
-      <div className="product1-display"  style={{ fontFamily: 'Montserrat Alternates' }}>
+      <div className="product1-display" style={{ fontFamily: 'Montserrat Alternates' }}>
         <div>Product name</div>
         <div>Quantity</div>
         <div>Price</div>

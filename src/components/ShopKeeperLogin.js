@@ -41,7 +41,7 @@ function ShopKeeperLogin() {
           style={{fontFamily: 'Montserrat Alternates'}}
         />
         <input
-          type="text"
+          type="password"
           placeholder="Password"
           name="password"
           value={user.password}

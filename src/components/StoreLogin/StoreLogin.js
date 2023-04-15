@@ -15,8 +15,7 @@ function StoreLogin() {
     await axios
       .post("http://35.192.98.172/api/farmerlogin/", data)
       .then((res) => {
-        if (res.status == 200) {
-          // console.log(res.data);
+        if (res.status === 200) {
           localStorage.setItem("mobile", res.data.mobile);
           localStorage.setItem("name", res.data.name);
           localStorage.setItem("pincode", res.data.pincode);

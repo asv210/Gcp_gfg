@@ -15,8 +15,6 @@ function ShopKeeperDetails() {
       .post("http://35.192.98.172/api/createsk/", user)
       .then((res) => {
         if (res.status == 201) {
-          // console.log(res.data);
-
           alert("successfully added");
           window.location = "/Adminpage";
         } else {

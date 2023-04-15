@@ -21,10 +21,7 @@ function AddProduct() {
       .post("http://35.192.98.172/api/createprod/", prod)
       .then((res) => {
         if (res.status === 201) {
-          // console.log(res.data);
-
           alert("successfully added");
-
           window.location = "/Shopkeeperpage";
         } else {
           alert("something went wrong");

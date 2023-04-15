@@ -4,26 +4,12 @@ import axios from "axios";
 function Adminpage() {
   const [dat, setData] = useState([]);
   const func = async () => {
-    // e.preventDefault();
-
     const { data } = await axios.get("http://35.192.98.172/api/getallsk/");
-    // .then((res) => {
-    // const data1 = res.data;
-    // console.log(res.data);
-    // const data = await res.data;
     if (data.length > 0) {
       setData([data]);
       console.log(dat[0]);
     } else {
     }
-    // // console.log(res.data);
-    // setData(res.data);
-    // console.log(dat);
-
-    // .then((res) => {
-    //   setData([...data, res.data]);
-    //   console.log(data);
-    // });
   };
   useEffect(() => {
     func();
@@ -64,10 +50,6 @@ function Adminpage() {
           <div>
             {dat[0].map((item) => {
               return <Shopkeeperdisplay item={item} />;
-
-              {
-                /* return <h2>htfyt</h2>; */
-              }
             })}
           </div>
         ) : (

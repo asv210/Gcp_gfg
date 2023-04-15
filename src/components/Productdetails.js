@@ -3,7 +3,6 @@ import axios from "axios";
 function Productdetails({ item }) {
   const edit = () => {
     localStorage.setItem("productId", item?._id);
-    // console.log(localStorage.getItem("productId"));
     window.location = "/EditProduct";
   };
   const del = async () => {
@@ -11,8 +10,6 @@ function Productdetails({ item }) {
       .delete("http://35.192.98.172/api/deleteprod/?_id=" + item?._id)
       .then((res) => {
         if (res.status === 204) {
-          // console.log(res.data);
-
           alert("successfully delete");
           window.location.reload(true);
         } else {
