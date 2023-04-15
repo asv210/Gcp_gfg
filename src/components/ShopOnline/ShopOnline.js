@@ -92,7 +92,17 @@ function ShopOnline(props) {
               </ul>
             </nav>
             <div>
-              <NavLink onClick={abc}>Cart</NavLink>
+              <Button style={{
+                transitionDuration: '0.4s',
+                backgroundColor: 'blue',
+                color: 'white',
+                border: 'none',
+                textDecoration: 'none',
+                fontWeight: 'bolder',
+                height: '2rem',
+                width: "5rem",
+                fontFamily: 'Montserrat Alternates',
+              }} onClick={abc}>Cart</Button>
             </div>
           </div>
         </section>
@@ -197,7 +207,7 @@ function ShopOnline(props) {
             })}
           </div>
         </section>
-      </section>
+      </section >
     </>
   );
 }
