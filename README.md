@@ -1,6 +1,28 @@
-Since this project will hold both the client application and the server application there will be node modules in two different places. First run `npm install` from the root. After this you will run `npm run-script install-all` from the root. From now on run this command anytime you want to install all modules again. This is a script we have defined in package.json .
+## Project Description: Fortune Farm
 
-This app can be deployed directly to Google Cloud and AMD instance since there is a script defined in package.json which will automatically handle building and deploying the app.  
+Fortune Farm is an innovative agriculture project that aims to provide farmers with easy access to agriculture products and weather information for better crop management. The project is designed to help farmers improve their farming practices, increase their productivity, and generate more income by leveraging the power of technology.
+
+## Technologies
+
+Frontend: The frontend of the Fortune Farm project is developed using React JS, a popular JavaScript library for building user interfaces. React JS provides a modern and efficient approach to building web applications and allows for seamless updates and modifications.
+
+Backend: The backend of the Fortune Farm project is developed using Node JS, a server-side JavaScript runtime. Node JS provides a scalable and efficient way to handle server-side logic and database interactions.
+
+Database: The Fortune Farm platform uses MongoDB, a popular NoSQL database, to store and manage data. MongoDB provides a flexible and scalable approach to data storage and allows for efficient querying and indexing.
+
+Deployment: The Fortune Farm project is deployed using Google Cloud and AMD instance, which provides a reliable and scalable infrastructure for hosting web applications. The deployment process is automated using CI/CD pipelines to ensure a seamless and error-free deployment process.
+
+## Roles of team members
+
+Rahul Shinde :- Frontend part ( weather API fetching and UI desgin) and deployment of backend and frontend to Google cloud.
+Apar Solanki :- Backend part (creating REST APIs for CRUD operations and integration of backend with frontend) 
+Shreya Patel :- Frontend part (UI desgin)
+Sanjana Daki :- Frontend part (UI design)
+
+
+Since this project have both the client application and the server application there is node modules in two different places. First run `npm install` from the root. After this you will run `npm run-script install-all` from the root. From now on run this command anytime you want to install all modules again. This is a script we have defined in package.json.
+
+This app have been deployed directly to Google Cloud using AMD instance. The backend nodejs server is deployed in Compute engine Virtual instance and the frontend reactjs is deployed in app engine and its build folder in cloud storage. 
 
 ## File structure
 #### `Frontend` - Holds the client application
@@ -22,15 +44,6 @@ This app can be deployed directly to Google Cloud and AMD instance since there i
 #### `package.json` - Defines npm behaviors like the scripts defined in the next section of the README
 #### `.gitignore` - Tells git which files to ignore
 #### `README` - This file!
-
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn how to setup a local MongoDB instance for testing, check out how to [Connect to MongoDB](https://docs.mongodb.com/guides/server/drivers/).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
 
 
 ### View Project
