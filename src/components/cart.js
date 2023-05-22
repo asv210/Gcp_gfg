@@ -11,7 +11,7 @@ function Cart({ item }) {
   const func = async () => {
     console.log(item?.productId);
     const { data } = await axios.post(
-      "http://35.192.98.172/api/getprodbyid/?id=" + item?.productId
+      "http://localhost:8000/api/getprodbyid/?id=" + item?.productId
     );
 
     setData(data);
@@ -25,12 +25,12 @@ function Cart({ item }) {
     ide: item?.productId,
   });
   const remove = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
+    console.log("ok");
     await axios
-      .post("http://35.192.98.172/api/deletecart/", first)
+      .post("http://localhost:8000/api/deletecart/", first)
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data);
           window.location.reload(true);
         } else {
           alert("wrong details");
@@ -38,9 +38,24 @@ function Cart({ item }) {
         }
       });
   };
-  const buy = () => {
+  const buy = async (e) => {
+    // e.preventDefault();
+    console.log(first.ide);
+    await axios
+      .put("http://localhost:8000/api/updatequantity/?_id=" + first.ide)
+      .then((res) => {
+        if (res.status === 200) {
+          alert(
+            "product purchased : " +
+              res.data.productName +
+              " at price " +
+              res.data.price
+          );
+        } else {
+          alert("product not found");
+        }
+      });
     remove();
-    window.location();
   };
   return (
     <>
@@ -51,7 +66,13 @@ function Cart({ item }) {
         >
           <img
             className="card-img-top"
-            src={id?.prodType === 'Seed' ? pic : id?.prodType === 'Fertilizer' ? pic1 : pic2}
+            src={
+              id?.prodType === "Seed"
+                ? pic
+                : id?.prodType === "Fertilizer"
+                ? pic1
+                : pic2
+            }
             alt="Card image cap"
             style={{ width: "100%", height: "35%" }}
           />
@@ -61,10 +82,12 @@ function Cart({ item }) {
             <p className="card-text">
               <p>Rs. {id?.price} /-</p>
             </p>
-            <div className="card-footer" style={{ height: '30%' }}>
+            <div className="card-footer" style={{ height: "30%" }}>
               <Button
                 className="btn btn-primary"
                 style={{ width: "100%" }}
+                on
+                onClick={() => buy(id?.productId)}
               >
                 Buy Now
               </Button>

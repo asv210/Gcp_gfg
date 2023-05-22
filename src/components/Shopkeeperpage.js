@@ -6,7 +6,7 @@ function Shopkeeperpage() {
   const func = async () => {
     const emo = localStorage.getItem("email");
     const { data } = await axios.post(
-      "http://35.192.98.172/api/getallproduct/?email=" + emo
+      "http://localhost:8000/api/getallproduct/?email=" + emo
     );
     if (data.length > 0) {
       setData([data]);
@@ -21,11 +21,12 @@ function Shopkeeperpage() {
   };
   return (
     <>
-      <nav className="on-top" style={{ fontFamily: 'Montserrat Alternates' }}>
+      <nav className="on-top" style={{ fontFamily: "Montserrat Alternates" }}>
         <button className="admin-btn" onClick={addDetails}>
           Add Products
         </button>
-        <button className="admin-btn"
+        <button
+          className="admin-btn"
           onClick={() => {
             localStorage.removeItem("email");
             window.location = "/";
@@ -34,7 +35,10 @@ function Shopkeeperpage() {
           Log Out
         </button>
       </nav>
-      <div className="product1-display" style={{ fontFamily: 'Montserrat Alternates' }}>
+      <div
+        className="product1-display"
+        style={{ fontFamily: "Montserrat Alternates" }}
+      >
         <div>Product name</div>
         <div>Quantity</div>
         <div>Price</div>
@@ -45,7 +49,7 @@ function Shopkeeperpage() {
           marginTop: "5px",
           display: "flex",
           justifyContent: "center",
-          fontFamily: 'Montserrat Alternates'
+          fontFamily: "Montserrat Alternates",
         }}
       >
         {dat.length > 0 ? (

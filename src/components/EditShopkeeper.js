@@ -12,7 +12,7 @@ const EditShopkeeper = () => {
   const [id, setid] = useState(localStorage.getItem("skId"));
   const onSubmit = async (e) => {
     await axios
-      .put("http://35.192.98.172/api/editskbyid/?_id=" + id, user)
+      .put("http://localhost:8000/api/editskbyid/?_id=" + id, user)
       .then((res) => {
         if (res.status == 200) {
           alert("successfully added");
@@ -32,7 +32,7 @@ const EditShopkeeper = () => {
   };
   const fun = async (e) => {
     await axios
-      .post("http://35.192.98.172/api/getskbyid/?_id=" + id)
+      .post("http://localhost:8000/api/getskbyid/?_id=" + id)
       .then((res) => {
         setuser(res.data);
         console.log(res.data);
@@ -43,43 +43,49 @@ const EditShopkeeper = () => {
   }, [id]);
   return (
     <>
-      <div className="box" style={{ fontFamily: 'Montserrat Alternates' }}>
+      <div className="box" style={{ fontFamily: "Montserrat Alternates" }}>
         <h2>Update Shopkeeper</h2>
         <input
           type="text"
           name="ShopName"
           value={user.ShopName}
           onChange={handler}
-          style={{ fontFamily: 'Montserrat Alternates' }}
+          style={{ fontFamily: "Montserrat Alternates" }}
         />
         <input
           type="text"
           name="address"
           value={user.address}
           onChange={handler}
-          style={{ fontFamily: 'Montserrat Alternates' }}
+          style={{ fontFamily: "Montserrat Alternates" }}
         />
         <input
           type="text"
           name="pincode"
           value={user.pincode}
           onChange={handler}
-          style={{ fontFamily: 'Montserrat Alternates' }}
+          style={{ fontFamily: "Montserrat Alternates" }}
         />
         <input
           type="text"
           name="mobile_no"
           value={user.mobile_no}
           onChange={handler}
-          style={{ fontFamily: 'Montserrat Alternates' }}
+          style={{ fontFamily: "Montserrat Alternates" }}
         />
-        <input type="text" name="email" value={user.email} onChange={handler} style={{ fontFamily: 'Montserrat Alternates' }} />
+        <input
+          type="text"
+          name="email"
+          value={user.email}
+          onChange={handler}
+          style={{ fontFamily: "Montserrat Alternates" }}
+        />
         <input
           type="text"
           name="password"
           value={user.password}
           onChange={handler}
-          style={{ fontFamily: 'Montserrat Alternates' }}
+          style={{ fontFamily: "Montserrat Alternates" }}
         />
         <button className="btn" onClick={onSubmit}>
           Update

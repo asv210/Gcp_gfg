@@ -7,7 +7,7 @@ const ShopsNearMe = () => {
   const pi = localStorage.getItem("pincode");
   const func = async () => {
     const { data } = await axios.post(
-      "http://35.192.98.172/api/getskbypin/?pin=" + pi
+      "http://localhost:8000/api/getskbypin/?pin=" + pi
     );
     if (data.length > 0) {
       setData([data]);
@@ -18,6 +18,12 @@ const ShopsNearMe = () => {
   useEffect(() => {
     func();
   }, [pi]);
+  const logout = () => {
+    localStorage.removeItem("mobile");
+    localStorage.removeItem("pincode");
+    localStorage.removeItem("name");
+    window.location = "/storeLogin";
+  };
   return (
     <>
       <section className={styles.leftContainer}>
@@ -27,8 +33,9 @@ const ShopsNearMe = () => {
               className="nav-link"
               style={{ color: "black" }}
               to="/storeLogin"
+              onClick={logout}
             >
-              Login
+              Log out
             </NavLink>
           </li>
           <li className="nav-item">
@@ -51,18 +58,25 @@ const ShopsNearMe = () => {
           </li>
         </ul>
       </section>
-      <h1
-        style={{
-          textAlign: "center",
-          fontWeight: "400",
-          color: "black",
-        }}
-      >
-        Shops near me
-      </h1>
 
       {dat.length > 0 ? (
-        <div className={styles.rightContainer}>
+        <div
+          className={styles.rightContainer}
+          style={{
+            marginRight: "1rem",
+            width: "76%",
+          }}
+        >
+          {/* <h1
+            style={{
+              fontWeight: "400",
+              textAlign: "center",
+
+              color: "black",
+            }}
+          >
+            Shops near me
+          </h1> */}
           {dat[0].map((item) => {
             return (
               <div className="product-display-two">

@@ -19,7 +19,7 @@ const CartItems = (props) => {
   ]);
   const func = async () => {
     const { data } = await axios.post(
-      "http://35.192.98.172/api/farmerlogin/",
+      "http://localhost:8000/api/farmerlogin/",
       productData
     );
 
@@ -34,7 +34,7 @@ const CartItems = (props) => {
       if (productInfo.length > 0) {
         const axiosRequests = productInfo[0].map(async (item) => {
           const { data } = await axios.post(
-            "http://35.192.98.172/api/getprodbyid/?id=" + item?.productId
+            "http://localhost:8000/api/getprodbyid/?id=" + item?.productId
           );
           console.log("er");
           return parseInt(data.price);
@@ -54,7 +54,14 @@ const CartItems = (props) => {
     <>
       {productInfo.map !== undefined ? (
         <>
-          <div style={{ gridTemplateColumns: 'repeat(3, 1fr)', display: 'grid', justifySelf: 'center', paddingLeft: '4rem' }}>
+          <div
+            style={{
+              gridTemplateColumns: "repeat(3, 1fr)",
+              display: "grid",
+              justifySelf: "center",
+              paddingLeft: "4rem",
+            }}
+          >
             {productInfo[0]?.map((item) => {
               return (
                 <Cart

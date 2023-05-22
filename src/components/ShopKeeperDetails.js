@@ -12,7 +12,7 @@ function ShopKeeperDetails() {
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios
-      .post("http://35.192.98.172/api/createsk/", user)
+      .post("http://localhost:8000/api/createsk/", user)
       .then((res) => {
         if (res.status == 201) {
           alert("successfully added");
@@ -31,15 +31,15 @@ function ShopKeeperDetails() {
   };
   return (
     <>
-      <div className="box" style={{fontFamily: 'Montserrat Alternates'}}>
-        <h2 style={{paddingTop: '20px'}}>Add Shopkeeper</h2>
+      <div className="box" style={{ fontFamily: "Montserrat Alternates" }}>
+        <h2 style={{ paddingTop: "20px" }}>Add Shopkeeper</h2>
         <input
           type="text"
           placeholder="Enter shop name"
           name="ShopName"
           value={user.ShopName}
           onChange={handler}
-          style={{fontFamily: 'Montserrat Alternates'}}
+          style={{ fontFamily: "Montserrat Alternates" }}
         />
         <input
           type="text"
@@ -47,7 +47,7 @@ function ShopKeeperDetails() {
           name="address"
           value={user.address}
           onChange={handler}
-          style={{fontFamily: 'Montserrat Alternates'}}
+          style={{ fontFamily: "Montserrat Alternates" }}
         />
         <input
           type="text"
@@ -55,7 +55,7 @@ function ShopKeeperDetails() {
           name="pincode"
           value={user.pincode}
           onChange={handler}
-          style={{fontFamily: 'Montserrat Alternates'}}
+          style={{ fontFamily: "Montserrat Alternates" }}
         />
         <input
           type="text"
@@ -63,7 +63,7 @@ function ShopKeeperDetails() {
           name="mobile_no"
           value={user.mobile_no}
           onChange={handler}
-          style={{fontFamily: 'Montserrat Alternates'}}
+          style={{ fontFamily: "Montserrat Alternates" }}
         />
         <input
           type="text"
@@ -71,7 +71,7 @@ function ShopKeeperDetails() {
           name="email"
           value={user.email}
           onChange={handler}
-          style={{fontFamily: 'Montserrat Alternates'}}
+          style={{ fontFamily: "Montserrat Alternates" }}
         />
         <input
           type="text"
@@ -79,7 +79,7 @@ function ShopKeeperDetails() {
           name="password"
           value={user.password}
           onChange={handler}
-          style={{fontFamily: 'Montserrat Alternates'}}
+          style={{ fontFamily: "Montserrat Alternates" }}
         />
         <button className="btn" onClick={onSubmit}>
           Submit
