@@ -10,12 +10,12 @@ import pic1 from "../../images/fertilizer.jpg";
 import pic2 from "../../images/tool.png";
 const ButtonGroup = Button.Group;
 function ShopOnline(props) {
-  const [seed, setSeed] = useState([{},]);
-  const [fertilizers, setFertilizers] = useState([{},]);
+  const [seed, setSeed] = useState([{}]);
+  const [fertilizers, setFertilizers] = useState([{}]);
   const [tools, setTools] = useState([]);
   const [first, setfirst] = useState([]);
   const func = async () => {
-    const { data } = await axios.get("http://35.192.98.172/api/allproduct/");
+    const { data } = await axios.get("http://localhost:8000/api/allproduct/");
     console.log(data);
     if (data.length > 0) {
       setSeed(data.filter((item) => item.prodType === "Seed"));
@@ -30,11 +30,25 @@ function ShopOnline(props) {
   const abc = () => {
     window.location = "/cartItems";
   };
-  const addToCart = async (par) => {
-    const { data } = await axios.post("http://35.192.98.172/api/updatecart/", {
-      name: localStorage.getItem("name"),
-      id: par,
-    });
+  const addToCart = async (par, i) => {
+    if (i > 0) {
+      const { data } = await axios.post(
+        "http://localhost:8000/api/updatecart/",
+        {
+          name: localStorage.getItem("name"),
+          id: par,
+        }
+      );
+      alert("successfully added");
+    } else {
+      alert("Product unavailable");
+    }
+  };
+  const logout = () => {
+    localStorage.removeItem("mobile");
+    localStorage.removeItem("pincode");
+    localStorage.removeItem("name");
+    window.location = "/storeLogin";
   };
   return (
     <>
@@ -45,8 +59,9 @@ function ShopOnline(props) {
               className="nav-link"
               style={{ color: "black" }}
               to="/storeLogin"
+              onClick={logout}
             >
-              Login
+              Log out
             </NavLink>
           </li>
           <li className="nav-item">
@@ -92,17 +107,22 @@ function ShopOnline(props) {
               </ul>
             </nav>
             <div>
-              <Button style={{
-                transitionDuration: '0.4s',
-                backgroundColor: 'blue',
-                color: 'white',
-                border: 'none',
-                textDecoration: 'none',
-                fontWeight: 'bolder',
-                height: '2rem',
-                width: "5rem",
-                fontFamily: 'Montserrat Alternates',
-              }} onClick={abc}>Cart</Button>
+              <Button
+                style={{
+                  transitionDuration: "0.4s",
+                  backgroundColor: "blue",
+                  color: "white",
+                  border: "none",
+                  textDecoration: "none",
+                  fontWeight: "bolder",
+                  height: "2rem",
+                  width: "5rem",
+                  fontFamily: "Montserrat Alternates",
+                }}
+                onClick={abc}
+              >
+                Cart
+              </Button>
             </div>
           </div>
         </section>
@@ -130,7 +150,7 @@ function ShopOnline(props) {
                       <Button
                         className="btn btn-primary"
                         style={{ width: "100%" }}
-                        onClick={() => addToCart(seed._id)}
+                        onClick={() => addToCart(seed._id, seed.quantity)}
                       >
                         Add to cart
                       </Button>
@@ -207,7 +227,7 @@ function ShopOnline(props) {
             })}
           </div>
         </section>
-      </section >
+      </section>
     </>
   );
 }

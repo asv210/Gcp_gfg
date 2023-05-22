@@ -26,11 +26,10 @@ function ShopKeeperLogin() {
         window.location.reload(true);
       }
     });
-    window.location = "Shopkeeperpage";
   };
   return (
     <>
-      <div className="box" style={{fontFamily: 'Montserrat Alternates'}}>
+      <div className="box" style={{ fontFamily: "Montserrat Alternates" }}>
         <h2>Shopkeeper Login</h2>
         <input
           type="text"
@@ -38,7 +37,7 @@ function ShopKeeperLogin() {
           name="email"
           value={user.email}
           onChange={handler}
-          style={{fontFamily: 'Montserrat Alternates'}}
+          style={{ fontFamily: "Montserrat Alternates" }}
         />
         <input
           type="password"
@@ -46,7 +45,7 @@ function ShopKeeperLogin() {
           name="password"
           value={user.password}
           onChange={handler}
-          style={{fontFamily: 'Montserrat Alternates'}}
+          style={{ fontFamily: "Montserrat Alternates" }}
         />
         <button className="btn" onClick={onSubmit}>
           Login

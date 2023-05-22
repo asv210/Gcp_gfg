@@ -40,4 +40,5 @@ router.post("/farmerlogin/", FarmerRoute.getDocByNo);
 router.post("/deletecart/", FarmerRoute.deletecart);
 router.post("/updatecart/", FarmerRoute.updatecart);
 
+router.put("/updatequantity/", ProductRoute.updateDocQuantity);
 export default router;

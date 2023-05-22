@@ -13,7 +13,7 @@ function StoreLogin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await axios
-      .post("http://35.192.98.172/api/farmerlogin/", data)
+      .post("http://localhost:8000/api/farmerlogin/", data)
       .then((res) => {
         if (res.status === 200) {
           localStorage.setItem("mobile", res.data.mobile);
@@ -40,7 +40,7 @@ function StoreLogin() {
               Login
             </NavLink>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <NavLink
               className="nav-link"
               style={{ color: "black" }}
@@ -57,7 +57,7 @@ function StoreLogin() {
             >
               Shops Near me
             </NavLink>
-          </li>
+          </li> */}
         </ul>
       </section>
       <section className={styles.rightContainer}>
