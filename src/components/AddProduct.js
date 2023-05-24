@@ -18,7 +18,7 @@ function AddProduct() {
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios
-      .post("http://35.192.98.172/api/createprod/", prod)
+      .post("http://localhost:8000/api/createprod/", prod)
       .then((res) => {
         if (res.status === 201) {
           alert("successfully added");
@@ -32,7 +32,7 @@ function AddProduct() {
 
   return (
     <>
-      <div className="box" style={{ fontFamily: 'Montserrat Alternates' }}>
+      <div className="box" style={{ fontFamily: "Montserrat Alternates" }}>
         <h2>Add Product</h2>
         <input
           type="text"
@@ -40,7 +40,7 @@ function AddProduct() {
           name="productName"
           value={prod.productName}
           onChange={handler}
-          style={{ fontFamily: 'Montserrat Alternates' }}
+          style={{ fontFamily: "Montserrat Alternates" }}
         />
         <input
           type="number"
@@ -48,8 +48,7 @@ function AddProduct() {
           name="quantity"
           value={prod.quantity}
           onChange={handler}
-          style={{ fontFamily: 'Montserrat Alternates' }}
-
+          style={{ fontFamily: "Montserrat Alternates" }}
         />
         <input
           type="text"
@@ -57,16 +56,14 @@ function AddProduct() {
           name="price"
           value={prod.price}
           onChange={handler}
-          style={{ fontFamily: 'Montserrat Alternates' }}
-
+          style={{ fontFamily: "Montserrat Alternates" }}
         />
         <select
           id="type"
           name="prodType"
           value={prod.prodType}
           onChange={handler}
-          style={{ fontFamily: 'Montserrat Alternates' }}
-
+          style={{ fontFamily: "Montserrat Alternates" }}
         >
           <option value="Seed">Seed</option>
           <option value="Fertilizer">Fertilizer</option>

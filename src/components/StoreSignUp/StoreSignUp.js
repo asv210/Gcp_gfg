@@ -18,7 +18,7 @@ function StoreSignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await axios
-      .post("http://35.192.98.172/api/createfarmer/", data)
+      .post("http://localhost:8000/api/createfarmer/", data)
       .then((res) => {
         if (res.status === 201) {
           alert("successfully added");
@@ -29,6 +29,7 @@ function StoreSignUp() {
         }
       });
   };
+
   return (
     <>
       <section className={styles.leftContainer}>
@@ -40,24 +41,6 @@ function StoreSignUp() {
               to="/storeLogin"
             >
               Login
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink
-              className="nav-link"
-              style={{ color: "black" }}
-              to="/shopOnline"
-            >
-              Shop Online
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink
-              className="nav-link"
-              style={{ color: "black" }}
-              to="/nearShops"
-            >
-              Shops Near me
             </NavLink>
           </li>
         </ul>

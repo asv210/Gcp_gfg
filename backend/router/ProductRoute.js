@@ -1,6 +1,7 @@
 import { isValidObjectId } from "mongoose";
 import ProductModel from "../model/ProductModel.js";
 
+
 class ProductRoute {
   static createDoc = async (req, res) => {
     const obj = new ProductModel(req.body);
@@ -88,6 +89,35 @@ class ProductRoute {
       console(err);
     }
   };
+
+  static updateDocQuantity = async (req, res) => {
+
+    const isValidId = isValidObjectId(req.query._id);
+    if (!isValidId) {
+      return res.status(400).json({ message: "Invalid product ID" });
+    }
+    try {
+      console.log(req.query._id);
+      const productId = req.query._id;
+
+      // Assuming the ProductModel is a Mongoose model for the 'products' collection
+      const updateuser = await ProductModel.findOneAndUpdate(
+        { _id: productId },
+        { $inc: { quantity: -1 } }, // Decrease the 'quantity' field by 1
+        { new: true } // Return the updated document
+      );
+
+      if (!updateuser) {
+        return res.status(404).json({ message: "Product not found" });
+      }
+
+      res.status(200).json({ user: updateuser });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  };
 }
+
+
 
 export default ProductRoute;

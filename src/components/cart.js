@@ -4,14 +4,15 @@ import { Button } from "antd";
 import pic from "../images/seeds.jpg";
 import pic1 from "../images/fertilizer.jpg";
 import pic2 from "../images/tool.png";
-
 import axios from "axios";
+
+
 function Cart({ item }) {
   const [id, setData] = useState();
   const func = async () => {
     console.log(item?.productId);
     const { data } = await axios.post(
-      "http://35.192.98.172/api/getprodbyid/?id=" + item?.productId
+      "http://localhost:8000/api/getprodbyid/?id=" + item?.productId
     );
 
     setData(data);
@@ -24,13 +25,14 @@ function Cart({ item }) {
     name: localStorage.getItem("name"),
     ide: item?.productId,
   });
+
   const remove = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
+    console.log("ok");
     await axios
-      .post("http://35.192.98.172/api/deletecart/", first)
+      .post("http://localhost:8000/api/deletecart/", first)
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data);
           window.location.reload(true);
         } else {
           alert("wrong details");
@@ -38,10 +40,68 @@ function Cart({ item }) {
         }
       });
   };
-  const buy = () => {
-    remove();
-    window.location();
+
+  const payment = async (amount) => {
+    try {
+      const orderUrl = "http://localhost:8000/api/orders";
+      console.log(amount);
+      const { data } = await axios.post(orderUrl, { amount: amount });
+      console.log(data);
+      initPayment(data.data);
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const initPayment = (data) => {
+    const options = {
+      key: "rzp_test_IZyoqohluE390z",
+      amount: data.amount,
+      currency: data.currency,
+      name: "Farmers-Portal",
+      description: "Thank you for shopping with us",
+      image: "https://i.imgur.com/n5tjHFD.png",
+      order_id: data.id,
+      handler: async (response) => {
+        try {
+          const url = "http://localhost:8000/api/verify";
+          const { data } = await axios.post(url, response);
+          if (data.message === "Payment Successful") {
+            alert("Payment Successful");
+            remove()
+          }
+          console.log(data);
+        } catch (err) {
+          console.log(err);
+        }
+      },
+      theme: {
+        color: "#3399cc",
+      },
+    }
+    const rzp1 = new window.Razorpay(options);
+    rzp1.open();
+  }
+
+
+
+  const buy = async (e) => {
+    // e.preventDefault();
+    console.log(first.ide);
+    try {
+      const res = await axios.put("http://localhost:8000/api/updatequantity/?_id=" + first.ide);
+      if (res.status === 200) {
+        payment(res.data.user.price);
+      } else {
+        alert("product not found");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+
   return (
     <>
       <div className={styles.parentContainer} id="Seeds">
@@ -51,7 +111,13 @@ function Cart({ item }) {
         >
           <img
             className="card-img-top"
-            src={id?.prodType === 'Seed' ? pic : id?.prodType === 'Fertilizer' ? pic1 : pic2}
+            src={
+              id?.prodType === "Seed"
+                ? pic
+                : id?.prodType === "Fertilizer"
+                  ? pic1
+                  : pic2
+            }
             alt="Card image cap"
             style={{ width: "100%", height: "35%" }}
           />
@@ -61,10 +127,13 @@ function Cart({ item }) {
             <p className="card-text">
               <p>Rs. {id?.price} /-</p>
             </p>
-            <div className="card-footer" style={{ height: '30%' }}>
+            <div className="card-footer" style={{ height: "30%" }}>
+
               <Button
                 className="btn btn-primary"
                 style={{ width: "100%" }}
+                on
+                onClick={() => buy(id?.productId)}
               >
                 Buy Now
               </Button>

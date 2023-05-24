@@ -19,7 +19,7 @@ const EditProduct = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios
-      .put("http://35.192.98.172/api/editprodbymail/?_id=" + id, prod)
+      .put("http://localhost:8000/api/editprodbymail/?_id=" + id, prod)
       .then((res) => {
         if (res.status == 200) {
           alert("successfully added");
@@ -34,7 +34,7 @@ const EditProduct = () => {
 
   const fun = async (e) => {
     await axios
-      .post("http://35.192.98.172/api/getprodbyid/?_id=" + id)
+      .post("http://localhost:8000/api/getprodbyid/?_id=" + id)
       .then((res) => {
         setprod(res.data);
         console.log(res.data);

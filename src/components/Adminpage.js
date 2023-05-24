@@ -4,7 +4,7 @@ import axios from "axios";
 function Adminpage() {
   const [dat, setData] = useState([]);
   const func = async () => {
-    const { data } = await axios.get("http://35.192.98.172/api/getallsk/");
+    const { data } = await axios.get("http://localhost:8000/api/getallsk/");
     if (data.length > 0) {
       setData([data]);
       console.log(dat[0]);
@@ -19,19 +19,31 @@ function Adminpage() {
   };
   return (
     <>
-      <nav className="on-top" style={{ fontFamily: 'Montserrat Alternates', display: 'flex', justifyContent: 'right' }}>
+      <nav
+        className="on-top"
+        style={{
+          fontFamily: "Montserrat Alternates",
+          display: "flex",
+          justifyContent: "right",
+        }}
+      >
         <button className="admin-btn" onClick={addDetails}>
           Add shopkeeper
         </button>
-        <button className="admin-btn"
+        <button
+          className="admin-btn"
           onClick={() => {
             localStorage.removeItem("email");
             window.location = "/";
-          }}>
+          }}
+        >
           Logout
         </button>
       </nav>
-      <div className="product-display" style={{ fontFamily: 'Montserrat Alternates' }}>
+      <div
+        className="product-display"
+        style={{ fontFamily: "Montserrat Alternates" }}
+      >
         <div>Shop name</div>
         <div>Address</div>
         <div>Pincode</div>
@@ -43,7 +55,7 @@ function Adminpage() {
           marginTop: "5px",
           display: "flex",
           justifyContent: "center",
-          fontFamily: 'Montserrat Alternates'
+          fontFamily: "Montserrat Alternates",
         }}
       >
         {dat.length > 0 ? (
@@ -53,7 +65,12 @@ function Adminpage() {
             })}
           </div>
         ) : (
-          <div className="text-center" style={{ fontFamily: 'Montserrat Alternates' }}>Data Loading</div>
+          <div
+            className="text-center"
+            style={{ fontFamily: "Montserrat Alternates" }}
+          >
+            Data Loading
+          </div>
         )}
       </div>
     </>
