@@ -12,7 +12,7 @@ const EditShopkeeper = () => {
   const [id, setid] = useState(localStorage.getItem("skId"));
   const onSubmit = async (e) => {
     await axios
-      .put("http://localhost:8000/api/editskbyid/?_id=" + id, user)
+      .put("http://pullventure.live/api/editskbyid/?_id=" + id, user)
       .then((res) => {
         if (res.status == 200) {
           alert("successfully added");
@@ -32,7 +32,7 @@ const EditShopkeeper = () => {
   };
   const fun = async (e) => {
     await axios
-      .post("http://localhost:8000/api/getskbyid/?_id=" + id)
+      .post("http://pullventure.live/api/getskbyid/?_id=" + id)
       .then((res) => {
         setuser(res.data);
         console.log(res.data);

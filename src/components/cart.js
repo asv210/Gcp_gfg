@@ -12,7 +12,7 @@ function Cart({ item }) {
   const func = async () => {
     console.log(item?.productId);
     const { data } = await axios.post(
-      "http://localhost:8000/api/getprodbyid/?id=" + item?.productId
+      "http://pullventure.live/api/getprodbyid/?id=" + item?.productId
     );
 
     setData(data);
@@ -30,7 +30,7 @@ function Cart({ item }) {
     // e.preventDefault();
     console.log("ok");
     await axios
-      .post("http://localhost:8000/api/deletecart/", first)
+      .post("http://pullventure.live/api/deletecart/", first)
       .then((res) => {
         if (res.status === 200) {
           window.location.reload(true);
@@ -43,7 +43,7 @@ function Cart({ item }) {
 
   const payment = async (amount) => {
     try {
-      const orderUrl = "http://localhost:8000/api/orders";
+      const orderUrl = "http://pullventure.live/api/orders";
       console.log(amount);
       const { data } = await axios.post(orderUrl, { amount: amount });
       console.log(data);
@@ -65,7 +65,7 @@ function Cart({ item }) {
       order_id: data.id,
       handler: async (response) => {
         try {
-          const url = "http://localhost:8000/api/verify";
+          const url = "http://pullventure.live/api/verify";
           const { data } = await axios.post(url, response);
           if (data.message === "Payment Successful") {
             alert("Payment Successful");
@@ -90,7 +90,7 @@ function Cart({ item }) {
     // e.preventDefault();
     console.log(first.ide);
     try {
-      const res = await axios.put("http://localhost:8000/api/updatequantity/?_id=" + first.ide);
+      const res = await axios.put("http://pullventure.live/api/updatequantity/?_id=" + first.ide);
       if (res.status === 200) {
         payment(res.data.user.price);
       } else {

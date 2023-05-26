@@ -19,7 +19,7 @@ const CartItems = (props) => {
   ]);
   const func = async () => {
     const { data } = await axios.post(
-      "http://localhost:8000/api/farmerlogin/",
+      "http://pullventure.live/api/farmerlogin/",
       productData
     );
 
@@ -34,7 +34,7 @@ const CartItems = (props) => {
       if (productInfo.length > 0) {
         const axiosRequests = productInfo[0].map(async (item) => {
           const { data } = await axios.post(
-            "http://localhost:8000/api/getprodbyid/?id=" + item?.productId
+            "http://pullventure.live/api/getprodbyid/?id=" + item?.productId
           );
           console.log("er");
           return parseInt(data.price);

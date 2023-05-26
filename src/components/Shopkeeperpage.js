@@ -6,7 +6,7 @@ function Shopkeeperpage() {
   const func = async () => {
     const emo = localStorage.getItem("email");
     const { data } = await axios.post(
-      "http://localhost:8000/api/getallproduct/?email=" + emo
+      "http://pullventure.live/api/getallproduct/?email=" + emo
     );
     if (data.length > 0) {
       setData([data]);

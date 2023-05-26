@@ -12,7 +12,7 @@ function ShopKeeperDetails() {
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios
-      .post("http://localhost:8000/api/createsk/", user)
+      .post("http://pullventure.live/api/createsk/", user)
       .then((res) => {
         if (res.status == 201) {
           alert("successfully added");

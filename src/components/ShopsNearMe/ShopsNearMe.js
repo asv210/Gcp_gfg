@@ -7,7 +7,7 @@ const ShopsNearMe = () => {
   const pi = localStorage.getItem("pincode");
   const func = async () => {
     const { data } = await axios.post(
-      "http://localhost:8000/api/getskbypin/?pin=" + pi
+      "http://35.192.176.64/api/getskbypin/?pin=" + pi
     );
     if (data.length > 0) {
       setData([data]);
@@ -67,16 +67,17 @@ const ShopsNearMe = () => {
             width: "76%",
           }}
         >
-          {/* <h1
+          <h1
             style={{
               fontWeight: "400",
               textAlign: "center",
-
+              display: "flex",
+              alignItems: "center",
               color: "black",
             }}
           >
             Shops near me
-          </h1> */}
+          </h1>
           {dat[0].map((item) => {
             return (
               <div className="product-display-two">

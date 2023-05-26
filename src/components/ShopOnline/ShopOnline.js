@@ -16,7 +16,7 @@ function ShopOnline(props) {
   const [tools, setTools] = useState([]);
   const [first, setfirst] = useState([]);
   const func = async () => {
-    const { data } = await axios.get("http://localhost:8000/api/allproduct/");
+    const { data } = await axios.get("http://pullventure.live/api/allproduct/");
     console.log(data);
     if (data.length > 0) {
       setSeed(data.filter((item) => item.prodType === "Seed"));
@@ -34,7 +34,7 @@ function ShopOnline(props) {
   const addToCart = async (par, i) => {
     if (i > 0) {
       const { data } = await axios.post(
-        "http://localhost:8000/api/updatecart/",
+        "http://pullventure.live/api/updatecart/",
         {
           name: localStorage.getItem("name"),
           id: par,

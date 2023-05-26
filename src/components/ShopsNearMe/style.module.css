@@ -31,6 +31,7 @@
       padding-left: 25rem;
       border-radius: 15px;
       float: right;
+      position: relative;
       
       font-family: 'Montserrat Alternates';
 }
