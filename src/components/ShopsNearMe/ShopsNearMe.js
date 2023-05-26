@@ -7,7 +7,7 @@ const ShopsNearMe = () => {
   const pi = localStorage.getItem("pincode");
   const func = async () => {
     const { data } = await axios.post(
-      "http://35.192.176.64/api/getskbypin/?pin=" + pi
+      "http://pullventure.live/api/getskbypin/?pin=" + pi
     );
     if (data.length > 0) {
       setData([data]);

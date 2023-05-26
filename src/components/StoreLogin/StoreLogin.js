@@ -13,7 +13,7 @@ function StoreLogin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await axios
-      .post("http://35.192.176.64/api/farmerlogin/", data)
+      .post("http://pullventure.live/api/farmerlogin/", data)
       .then((res) => {
         if (res.status === 200) {
           localStorage.setItem("mobile", res.data.mobile);

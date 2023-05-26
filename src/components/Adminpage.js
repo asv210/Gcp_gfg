@@ -4,7 +4,7 @@ import axios from "axios";
 function Adminpage() {
   const [dat, setData] = useState([]);
   const func = async () => {
-    const { data } = await axios.get("http://35.192.176.64/api/getallsk/");
+    const { data } = await axios.get("http://pullventure.live/api/getallsk/");
     if (data.length > 0) {
       setData([data]);
       console.log(dat[0]);

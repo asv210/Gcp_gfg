@@ -18,7 +18,7 @@ function AddProduct() {
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios
-      .post("http://35.192.176.64/api/createprod/", prod)
+      .post("http://pullventure.live/api/createprod/", prod)
       .then((res) => {
         if (res.status === 201) {
           alert("successfully added");
